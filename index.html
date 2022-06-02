@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/style.css" media="all" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="login_form">
+        <button class="l-btn">Логин</button>
+        <button class="l-btn" disabled>Выйти</button>
+        <form name="login-form" class="form hidden">
+            <label for="login-field"><span>Логин</span></label>
+            <input type="text" id="login-field" name="user-name" placeholder="Введите логин" required>
+            <label for="psw-field"><span>Пароль</span></label>
+            <input type="password" id="psw-field" name="psw" placeholder="Введите пароль" required>
+            <button type="submit" class="l-btn">Войти</button>
+        </form>
+    </div>
+    <div class="second-row hidden">
+        <div class="first-cell">
+            <div class="select">
+                <select id="selector" onchange="setText()">
+                    <option disabled selected value>Выберите пункт</option>
+                    <option value="first">Пункт 1</option>
+                    <option value="second">Пункт 2</option>
+                    <option value="third">Пункт 3</option>
+                </select>
+            </div>
+            <div class="textarea hidden">
+                <textarea cols="50" maxlength="99999" placeholder="Выберите пункт выше" rows="20" id="textarea-1"></textarea>
+            </div>
+        </div>
+        <div class="second-cell">
+            <div class="textarea hidden">
+                <div class="buttons">
+                    <button class="t-btn">Сохранить</button>
+                    <button class="t-btn">Очистить</button>
+                </div>
+                <textarea cols="50" maxlength="99999" placeholder="Введите текст" rows="20" id="textarea-2"></textarea>
+                <div class="data">
+                    <div class="labels">
+                        <div class="first">
+                            <label for="">Текст 1</label>
+                            <input type="text">
+                        </div>
+                        <div class="second">
+                            <label for="">Текст 2</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                    <button></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table hidden">
+        <button class="table-btn">Добавить</button>
+        <table id="table">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+        </table>
+    </div>
+<!--<div class="list">
+    <div class="btn">
+        <a href="javascript:openList()" id="btn-a">Открыть список</a>
+    </div>
+    <div class="checkbox-container hidden" id="ch-container-1">
+        <div class="checkbox">
+            <input type="checkbox" name="" id="ch-1">
+            <label for="ch-1">Параметр 1</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="" id="ch-2">
+            <label for="ch-2">Параметр 2</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="" id="ch-3">
+            <label for="ch-3">Параметр 3</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="" id="ch-4">
+            <label for="ch-4">Параметр 4</label>
+        </div>
+    </div>
+</div>
+-->
+<!--<div class="checkbox-container" id="ch-container-2">
+    <div class="checkboxes">
+        <input type="checkbox" name="" id="ch-1-1">
+        <input type="checkbox" name="" id="ch-2-1">
+        <input type="checkbox" name="" id="ch-3-1">
+        <input type="checkbox" name="" id="ch-4-1">
+    </div>
+    <div class="labels">
+        <label for="ch-1-1">Параметр 1</label>
+        <label for="ch-2-1">Параметр 2</label>
+        <label for="ch-3-1">Параметр 3</label>
+        <label for="ch-4-1">Параметр 4</label>
+    </div>
+</div>-->
+<script defer type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
