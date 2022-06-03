@@ -49,14 +49,14 @@ T_BTN_2.addEventListener('click', clearText);
 //TABLE_BTN.addEventListener('click', addRows);
 
 document.addEventListener("DOMContentLoaded", function addText()   {
-    fetch("https://raw.githubusercontent.com/denvolk/koktel/pure-js/json/text.json")    //Для GitHub Pages
+    fetch("https://raw.githubusercontent.com/denvolk/kitel/master/json/text.json")    //Для GitHub Pages
     //fetch("http://localhost:63342/koktel/json/text.json")   //Для локального использования
         .then(response => response.json())
         .then(data => text = data)
 });
 
 document.addEventListener("DOMContentLoaded", function addGridText()   {
-    fetch("https://raw.githubusercontent.com/denvolk/koktel/pure-js/json/text.json")    //Для GitHub Pages
+    fetch("https://raw.githubusercontent.com/denvolk/kitel/master/json/text.json")    //Для GitHub Pages
     //fetch("http://localhost:63342/koktel/json/text_2.json")   //Для локального использования
         .then(response => response.json())
         .then(data => text_2 = data)
