@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function addText()   {
 });
 
 document.addEventListener("DOMContentLoaded", function addGridText()   {
-    fetch("https://raw.githubusercontent.com/denvolk/kitel/master/json/text.json")    //Для GitHub Pages
+    fetch("https://raw.githubusercontent.com/denvolk/kitel/master/json/text_2.json")    //Для GitHub Pages
     //fetch("http://localhost:63342/koktel/json/text_2.json")   //Для локального использования
         .then(response => response.json())
         .then(data => text_2 = data)
