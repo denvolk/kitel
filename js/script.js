@@ -37,26 +37,27 @@ let max_rows;
 L_BTN_1.addEventListener('click', showLoginForm);
 L_BTN_2.addEventListener('click', function(event){
     event.preventDefault();
-    submitForm();
-    document.getElementsByClassName('form')[0].classList.add('hidden');
+    let x = submitForm();
+    if (x)
+        document.getElementsByClassName('form')[0].classList.add('hidden');
 });
 L_BTN_3.addEventListener('click', logOut);
 
 T_BTN_1.addEventListener('click', saveText);
 T_BTN_2.addEventListener('click', clearText);
 
-TABLE_BTN.addEventListener('click', addRows);
+//TABLE_BTN.addEventListener('click', addRows);
 
 document.addEventListener("DOMContentLoaded", function addText()   {
-    fetch("https://raw.githubusercontent.com/denvolk/kitel/master/json/text.json")    //Для GitHub Pages
-    //fetch("http://localhost:63342/koktel/json/text.json")   //Для локального использования
+    //fetch("https://raw.githubusercontent.com/denvolk/koktel/pure-js/json/text.json")    //Для GitHub Pages
+    fetch("http://localhost:63342/koktel/json/text.json")   //Для локального использования
         .then(response => response.json())
         .then(data => text = data)
 });
 
 document.addEventListener("DOMContentLoaded", function addGridText()   {
-    fetch("https://raw.githubusercontent.com/denvolk/kitel/master/json/text_2.json")     //Для GitHub Pages
-    //fetch("http://localhost:63342/koktel/json/text_2.json")   //Для локального использования
+    //fetch("https://raw.githubusercontent.com/denvolk/koktel/pure-js/json/text.json")    //Для GitHub Pages
+    fetch("http://localhost:63342/koktel/json/text_2.json")   //Для локального использования
         .then(response => response.json())
         .then(data => text_2 = data)
         .then(result => max_rows = Object.keys(text_2).length)
@@ -77,16 +78,54 @@ function showLoginForm()    {
 }
 
 function alertLogin(mode)   {
-    if (mode === 0)
-        alert('Успешный вход');
-    else if (mode === 1)
-        alert('Проверьте логин');
-    else if (mode === 2)
-        alert('Проверьте пароль');
-    else if (mode === 3)
-        alert('Введите логин');
-    else if (mode === 4)
-        alert('Введите пароль');
+    let x = document.getElementsByClassName('alertWindow')[0];
+    if (mode === 0) {
+        //alert('Успешный вход');
+        x.innerHTML = 'Удачный Вход';
+        x.style.backgroundColor = "rgba(0, 255, 0, 0.6)";
+        x.classList.remove('hidden');
+        setTimeout(function (){
+            x.innerHTML = 'Неверный Логин';
+            x.style.backgroundColor = "rgba(255, 0, 0, 0.6)";
+            x.classList.add('hidden');
+        }, 4000);
+    }
+    else if (mode === 1) {
+        //alert('Проверьте логин');
+        x.innerHTML = 'Проверьте Логин';
+        x.classList.remove('hidden');
+        setTimeout(function (){
+            x.innerHTML = 'Неверный Логин';
+            x.classList.add('hidden');
+        }, 4000);
+    }
+    else if (mode === 2) {
+        //alert('Проверьте пароль');
+        x.innerHTML = 'Проверьте Пароль';
+        x.classList.remove('hidden');
+        setTimeout(function (){
+            x.innerHTML = 'Неверный Логин';
+            x.classList.add('hidden');
+        }, 4000);
+    }
+    else if (mode === 3) {
+        //alert('Введите логин');
+        x.innerHTML = 'Введите Логин';
+        x.classList.remove('hidden');
+        setTimeout(function (){
+            x.innerHTML = 'Неверный Логин';
+            x.classList.add('hidden');
+        }, 4000);
+    }
+    else if (mode === 4) {
+        //alert('Введите пароль');
+        x.innerHTML = 'Введите Пароль';
+        x.classList.remove('hidden');
+        setTimeout(function (){
+            x.innerHTML = 'Неверный Логин';
+            x.classList.add('hidden');
+        }, 4000);
+    }
     else
         alert('Invalid argument');
 }
@@ -139,7 +178,10 @@ function submitForm()   {
         textClassList_1.remove('hidden');
         textClassList_2.remove('hidden');
         tableClassList.remove('hidden');
+
+        return true;
     }
+    return false;
 }
 
 function logOut()   {
@@ -171,6 +213,62 @@ function logOut()   {
 
 function saveText() {
     console.log('save');
+
+    if (rows > max_rows)
+        return;
+
+    let table = document.getElementById('table');
+
+    let row;
+    let cell_0;
+    let cell_1;
+    let cell_2;
+    let cell_3;
+    let cell_4;
+    let cell_5;
+
+    let rows_str;
+
+    for (let iter = 0; iter < max_rows; iter++) {
+        row = table.insertRow(-1);
+
+        cell_0 = row.insertCell(0);
+        cell_1 = row.insertCell(1);
+        cell_2 = row.insertCell(2);
+        cell_3 = row.insertCell(3);
+        cell_4 = row.insertCell(4);
+        cell_5 = row.insertCell(5);
+
+        rows_str = rows.toString();
+
+        cell_0.innerHTML = text_2[rows_str]["text-1"];
+        cell_1.innerHTML = text_2[rows_str]["text-2"];
+        cell_2.innerHTML = text_2[rows_str]["text-3"];
+        cell_3.innerHTML = text_2[rows_str]["text-4"];
+        cell_4.innerHTML = text_2[rows_str]["text-5"];
+        cell_5.innerHTML = text_2[rows_str]["text-6"];
+
+        rows++;
+    }
+    /*let row = table.insertRow(-1);
+
+    let cell_0 = row.insertCell(0);
+    let cell_1 = row.insertCell(1);
+    let cell_2 = row.insertCell(2);
+    let cell_3 = row.insertCell(3);
+    let cell_4 = row.insertCell(4);
+    let cell_5 = row.insertCell(5);
+
+    let rows_str = rows.toString();
+
+    cell_0.innerHTML = text_2[rows_str]["text-1"];
+    cell_1.innerHTML = text_2[rows_str]["text-2"];
+    cell_2.innerHTML = text_2[rows_str]["text-3"];
+    cell_3.innerHTML = text_2[rows_str]["text-4"];
+    cell_4.innerHTML = text_2[rows_str]["text-5"];
+    cell_5.innerHTML = text_2[rows_str]["text-6"];
+
+    rows++;*/
 }
 
 function clearText()    {
@@ -216,7 +314,7 @@ function setText()  {
     }
 }
 
-function addRows()  {
+/*function addRows()  {
     if (rows > max_rows)
         return;
 
@@ -240,4 +338,43 @@ function addRows()  {
     cell_5.innerHTML = text_2[rows_str]["text-6"];
 
     rows++;
-}
+}*/
+
+/*window.onload = () =>   {
+    // Ваша формула
+    let y = x => 2*x*x+3*x-1;
+    let scale = 20;
+    let step = 1;
+    let cnvs = document.querySelector('canvas');
+    let ctx = cnvs.getContext('2d');
+
+    ctx.lineWidth = 0.5;
+
+    for (var i = step*scale; i < cnvs.width; i += step*scale) { //вертикальные
+        polyline('#7a7979', [[i, 0], [i, cnvs.height]]);
+    }
+
+    for (var i = step*scale; i < cnvs.height; i += step*scale) { //Горизонтальные
+        polyline('#7a7979', [[0, i], [cnvs.width, i]]);
+    }
+
+    ctx.lineWidth = 2;
+    let pts = [];
+    for(let x = -cnvs.width/2; x<cnvs.width/2; x+=5) {
+        pts.push([cnvs.width/2+x, cnvs.height/2 - y(x/scale)*scale]);
+    }
+    polyline('blue', pts);
+
+//Ось X
+    polyline('red', [[0, cnvs.height / 2], [cnvs.width, cnvs.height / 2]]);
+
+// ось Y
+    polyline('green', [[cnvs.width / 2, 0], [cnvs.width / 2, cnvs.height]]);
+
+    function polyline(color, pts) {
+        ctx.strokeStyle = color;
+        ctx.beginPath();
+        pts.forEach((p, i) => i ? ctx.lineTo(...p) : ctx.moveTo(...p));
+        ctx.stroke();
+    }
+}*/
