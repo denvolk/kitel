@@ -49,18 +49,19 @@ T_BTN_2.addEventListener('click', clearText);
 //TABLE_BTN.addEventListener('click', addRows);
 
 document.addEventListener("DOMContentLoaded", function addText()   {
-    fetch("https://raw.githubusercontent.com/denvolk/kitel/master/json/text.json")    //Для GitHub Pages
-    //fetch("http://localhost:63342/koktel/json/text.json")   //Для локального использования
+    //fetch("https://raw.githubusercontent.com/denvolk/kitel/master/json/text.json")    //Для GitHub Pages
+    fetch("http://localhost:63342/kitel/json/text.json")   //Для локального использования
         .then(response => response.json())
         .then(data => text = data)
 });
 
 document.addEventListener("DOMContentLoaded", function addGridText()   {
-    fetch("https://raw.githubusercontent.com/denvolk/kitel/master/json/text_2.json")    //Для GitHub Pages
-    //fetch("http://localhost:63342/koktel/json/text_2.json")   //Для локального использования
+    //fetch("https://raw.githubusercontent.com/denvolk/kitel/master/json/text_2.json")    //Для GitHub Pages
+    fetch("http://localhost:63342/kitel/json/text_2.json")   //Для локального использования
         .then(response => response.json())
         .then(data => text_2 = data)
         .then(result => max_rows = Object.keys(text_2).length)
+        .then(() => document.getElementsByClassName('t-btn')[0].classList.remove('disabled'))
 });
 
 //SELECTOR.addEventListener('onchange', setText);
@@ -193,10 +194,12 @@ function logOut()   {
     document.getElementById('selector').value = 0;
     document.getElementById('textarea-1').value = '';
     document.getElementById('textarea-2').value = '';
-    let table = document.getElementById('table');
+    //let table = document.getElementById('table');
 
-    for (let iter = rows; iter > 1; iter--)
-        table.deleteRow(-1);
+    document.querySelectorAll('.row').forEach(el => el.remove());
+
+    /*for (let iter = rows; iter > 1; iter--)
+        table.deleteRow(-1);*/
 
     let secondRowClassList = document.getElementsByClassName('second-row')[0].classList;
     let textClassList_1 = document.getElementsByClassName('textarea')[0].classList;
@@ -212,6 +215,33 @@ function logOut()   {
 }
 
 function saveText() {
+    if (rows > max_rows)
+        return;
+
+    let table = document.getElementById('first-table');
+    let cellCounter = 0;
+
+    for (let iter = 0; iter < max_rows; iter++, cellCounter += 6) {
+        let row = document.createElement('div');
+        row.classList.add('row');
+        row.id = iter.toString();
+
+        for (let iter_1 = 0; iter_1 < 6; iter_1++)  {
+            let cell = document.createElement('span');
+            cell.classList.add('cell');
+            cell.id = (iter_1 + cellCounter).toString();
+
+            cell.innerHTML = text_2[rows.toString()]["text-" + (iter_1 + 1)];
+
+            row.appendChild(cell);
+        }
+
+        table.appendChild(row);
+        rows++;
+    }
+}
+
+/*function saveText() {
     console.log('save');
 
     if (rows > max_rows)
@@ -250,26 +280,7 @@ function saveText() {
 
         rows++;
     }
-    /*let row = table.insertRow(-1);
-
-    let cell_0 = row.insertCell(0);
-    let cell_1 = row.insertCell(1);
-    let cell_2 = row.insertCell(2);
-    let cell_3 = row.insertCell(3);
-    let cell_4 = row.insertCell(4);
-    let cell_5 = row.insertCell(5);
-
-    let rows_str = rows.toString();
-
-    cell_0.innerHTML = text_2[rows_str]["text-1"];
-    cell_1.innerHTML = text_2[rows_str]["text-2"];
-    cell_2.innerHTML = text_2[rows_str]["text-3"];
-    cell_3.innerHTML = text_2[rows_str]["text-4"];
-    cell_4.innerHTML = text_2[rows_str]["text-5"];
-    cell_5.innerHTML = text_2[rows_str]["text-6"];
-
-    rows++;*/
-}
+}*/
 
 function clearText()    {
     document.getElementById('textarea-2').value = '';
@@ -279,39 +290,55 @@ function clearText()    {
 
 function setText()  {
 
-    if (SELECTOR.value === 'first') {
-        const str = text["first"]["text-1"] + "\n" +
+    let count = Object.keys(text[SELECTOR.value]).length;
+    console.log(count);
+
+    let textarea = ''; //= document.getElementById('textarea-1').value;
+
+    let x = SELECTOR.value;
+
+    for (let iter = 0; iter < count; iter++)    {
+        textarea += text[x]["text-" + (iter + 1).toString()] + "\n";
+    }
+
+    document.getElementById('textarea-1').value = textarea;
+
+    /*if (SELECTOR.value === 'first') {
+        //TEXT_AREA_1.value = str;
+        document.getElementById('textarea-1').value = text["first"]["text-1"] + "\n" +
             text["first"]["text-2"] + "\n" +
             text["first"]["text-3"] + "\n" +
             text["first"]["text-4"] + "\n" +
             text["first"]["text-5"] + "\n" +
-            text["first"]["text-6"]
-
-        //TEXT_AREA_1.value = str;
-        document.getElementById('textarea-1').value = str;
+            text["first"]["text-6"];
     }
     else if (SELECTOR.value === 'second')   {
-        const str = text["second"]["text-1"] + "\n" +
+        //TEXT_AREA_1.value = str;
+        document.getElementById('textarea-1').value = text["second"]["text-1"] + "\n" +
             text["second"]["text-2"] + "\n" +
             text["second"]["text-3"] + "\n" +
             text["second"]["text-4"] + "\n" +
             text["second"]["text-5"] + "\n" +
-            text["second"]["text-6"]
-
-        //TEXT_AREA_1.value = str;
-        document.getElementById('textarea-1').value = str;
+            text["second"]["text-6"];
     }
     else if (SELECTOR.value === 'third')   {
-        const str = text["third"]["text-1"] + "\n" +
+        //TEXT_AREA_1.value = str;
+        document.getElementById('textarea-1').value = text["third"]["text-1"] + "\n" +
             text["third"]["text-2"] + "\n" +
             text["third"]["text-3"] + "\n" +
             text["third"]["text-4"] + "\n" +
             text["third"]["text-5"] + "\n" +
-            text["third"]["text-6"]
-
-        //TEXT_AREA_1.value = str;
-        document.getElementById('textarea-1').value = str;
+            text["third"]["text-6"];
     }
+    else if (SELECTOR.value === 'fourth')   {
+        //TEXT_AREA_1.value = str;
+        document.getElementById('textarea-1').value = text["fourth"]["text-1"] + "\n" +
+            text["fourth"]["text-2"] + "\n" +
+            text["fourth"]["text-3"] + "\n" +
+            text["fourth"]["text-4"] + "\n" +
+            text["fourth"]["text-5"] + "\n" +
+            text["fourth"]["text-6"];
+    }*/
 }
 
 /*function addRows()  {

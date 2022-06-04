@@ -23,9 +23,10 @@
         <div class="select">
             <select id="selector" onchange="setText()">
                 <option disabled selected value>Выберите пункт</option>
-                <option value="first">Пункт 1</option>
-                <option value="second">Пункт 2</option>
-                <option value="third">Пункт 3</option>
+                <option value="first">Проверки заправочных систем АСУТО</option>
+                <option value="second">Давление в системах НИУКСИ</option>
+                <option value="third">Напряжение на приборах системы НИУКСИ</option>
+                <option value="fourth">Температура в системе НИУКСИ</option>
             </select>
         </div>
         <div class="textarea hidden">
@@ -35,7 +36,7 @@
     <div class="second-cell">
         <div class="textarea hidden">
             <div class="buttons">
-                <button class="t-btn">Сохранить параметры</button>
+                <button class="t-btn disabled">Сохранить параметры</button>
                 <button class="t-btn">Очистить</button>
             </div>
             <textarea cols="50" maxlength="99999" placeholder="Введите текст" rows="20" id="textarea-2"></textarea>
@@ -57,7 +58,12 @@
 </div>
 
 <div class="table hidden">
-    <!--<button class="table-btn">Добавить</button>-->
+    <table id="first-table">
+
+    </table>
+</div>
+
+<!--<div class="table hidden">
     <table id="table">
         <tr>
             <td>1</td>
@@ -68,7 +74,7 @@
             <td>6</td>
         </tr>
     </table>
-</div>
+</div>-->
 
 <!--<canvas width="200" height="200"></canvas>-->
 <script defer type="text/javascript" src="js/script.js"></script>
