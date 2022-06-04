@@ -49,15 +49,15 @@ T_BTN_2.addEventListener('click', clearText);
 //TABLE_BTN.addEventListener('click', addRows);
 
 document.addEventListener("DOMContentLoaded", function addText()   {
-    //fetch("https://raw.githubusercontent.com/denvolk/kitel/master/json/text.json")    //Для GitHub Pages
-    fetch("http://localhost:63342/kitel/json/text.json")   //Для локального использования
+    fetch("https://raw.githubusercontent.com/denvolk/kitel/master/json/text.json")    //Для GitHub Pages
+    //fetch("http://localhost:63342/kitel/json/text.json")   //Для локального использования
         .then(response => response.json())
         .then(data => text = data)
 });
 
 document.addEventListener("DOMContentLoaded", function addGridText()   {
-    //fetch("https://raw.githubusercontent.com/denvolk/kitel/master/json/text_2.json")    //Для GitHub Pages
-    fetch("http://localhost:63342/kitel/json/text_2.json")   //Для локального использования
+    fetch("https://raw.githubusercontent.com/denvolk/kitel/master/json/text_2.json")    //Для GitHub Pages
+    //fetch("http://localhost:63342/kitel/json/text_2.json")   //Для локального использования
         .then(response => response.json())
         .then(data => text_2 = data)
         .then(result => max_rows = Object.keys(text_2).length)
