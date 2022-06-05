@@ -36,11 +36,40 @@
     height: 200px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     border: solid black 2px;
     border-radius: 20px;
     padding: 20px;
+    padding-bottom: 10px;
     background-color: white;
+
+    font-size: 26px;
+}
+#login-field, #psw-field    {
+    appearance: none;
+    border: solid black 1px;
+    border-radius: 5px;
+    height: 26px;
+    font-size: 20px;
+}
+input[id$=field]:focus    {
+    outline: solid cyan 1px;
+}
+.form > .l-btn  {
+    appearance: none;
+    max-width: 100px;
+    height: 30px;
+    margin: 0 auto 0 auto;
+    font-size: 15px;
+
+    border: solid black 2px;
+    border-radius: 10px;
+}
+.form > .l-btn:hover:not(:disabled)    {
+    background-color: darkseagreen;
+}
+.form > .l-btn:active:not(:disabled)  {
+    transform: scale(0.99);
 }
 
 
@@ -57,6 +86,7 @@
 .first-cell {
     display: flex;
     flex-direction: column;
+    height: 396px;
 }
 .textarea {
     display: flex;
@@ -64,6 +94,13 @@
 }
 .buttons    {
     display: flex;
+}
+#textarea-1, #textarea-2 {
+    resize: none;
+    max-width: 390px;
+    height: 306px;
+    flex: 2;
+    overflow-y: scroll;
 }
 
 .table  {
@@ -106,11 +143,9 @@
     border-bottom: solid black 1px;
     border-top: solid black 1px;
     text-align: center;
-    line-height: 30px;
+    line-height: 32px;
 }
-/*.row[id$="0"] > .cell  {
-    border-top: solid black 2px;
-}*/
+
 #first-table > .row:nth-child(1)   {
     border-top: solid black 1px;
 }
@@ -139,6 +174,27 @@ td  {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+.footer {
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 150px;
+    /*margin-left: -3px;*/
+}
+
+.links  {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 126px;
+    margin-top: 4px;
+}
+
+.footer > a {
+    text-decoration-line: none;
 }
 
 .hidden {

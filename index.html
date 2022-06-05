@@ -10,6 +10,7 @@
 <div class="login_form">
     <button class="l-btn">Логин</button>
     <button class="l-btn" disabled>Выйти</button>
+    <span class="logInfo hidden">Вы вошли как: </span>
     <form name="login-form" class="form hidden">
         <label for="login-field"><span>Логин</span></label>
         <input type="text" id="login-field" name="user-name" placeholder="Введите логин" required>
@@ -22,7 +23,7 @@
     <div class="first-cell">
         <div class="select">
             <select id="selector" onchange="setText()">
-                <option disabled selected value>Выберите пункт</option>
+                <option>Выберите пункт</option> <!--disabled selected value-->
                 <option value="first">Проверки заправочных систем АСУТО</option>
                 <option value="second">Давление в системах НИУКСИ</option>
                 <option value="third">Напряжение на приборах системы НИУКСИ</option>
@@ -30,7 +31,8 @@
             </select>
         </div>
         <div class="textarea hidden">
-            <textarea cols="50" maxlength="99999" placeholder="Выберите пункт выше" rows="20" id="textarea-1"></textarea>
+            <textarea rows="20" maxlength="99999" placeholder="Выберите пункт выше" id="textarea-1" readonly></textarea>
+            <!--cols="50" rows="20"-->
         </div>
     </div>
     <div class="second-cell">
@@ -39,7 +41,8 @@
                 <button class="t-btn disabled">Сохранить параметры</button>
                 <button class="t-btn">Очистить</button>
             </div>
-            <textarea cols="50" maxlength="99999" placeholder="Введите текст" rows="20" id="textarea-2"></textarea>
+            <textarea rows="20" maxlength="99999" placeholder="Введите текст" id="textarea-2"></textarea>
+            <!--cols="50" rows="20"-->
             <div class="data">
                 <div class="labels">
                     <div class="first">
@@ -62,7 +65,21 @@
 
     </table>
 </div>
-
+<div class="footer">
+    <span>Связаться со мной</span>
+    <div class="links">
+        <a href="https://vk.com/moi_id_prosto_musor" target="_blank" rel="noopener noreferrer">
+            <img src="pics/VKBlack.svg" alt="VK" style="height: 22px">
+        </a>
+        <a href="https://discordapp.com/users/321641007324069890" target="_blank" rel="noopener noreferrer">
+            <img src="pics/DiscordBlack.svg" alt="Discord" style="height: 22px">
+        </a>
+        <a href="https://github.com/Lamp04ka" target="_blank" rel="noopener noreferrer">
+            <img src="pics/GitHubDark.png" alt="GitHub" style="height: 22px">
+        </a>
+    </div>
+    <span>&copy Борис Китель, 2022</span>
+</div>
 <!--<div class="table hidden">
     <table id="table">
         <tr>

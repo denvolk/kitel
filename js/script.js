@@ -174,11 +174,15 @@ function submitForm()   {
         let textClassList_1 = document.getElementsByClassName('textarea')[0].classList;
         let textClassList_2 = document.getElementsByClassName('textarea')[1].classList;
         let tableClassList = document.getElementsByClassName('table')[0].classList;
+        let logInfoClassList = document.getElementsByClassName('logInfo')[0].classList;
 
         secondRowClassList.remove('hidden');
         textClassList_1.remove('hidden');
         textClassList_2.remove('hidden');
         tableClassList.remove('hidden');
+        logInfoClassList.remove('hidden');
+
+        document.getElementsByClassName('logInfo')[0].innerHTML += document.getElementById('login-field').value;
 
         return true;
     }
@@ -190,8 +194,9 @@ function logOut()   {
     document.getElementsByClassName('l-btn')[1].disabled = true;
     document.getElementById('login-field').value = '';
     document.getElementById('psw-field').value = '';
+    document.getElementsByClassName('logInfo')[0].innerHTML = "Вы вошли как: ";
 
-    document.getElementById('selector').value = 0;
+        document.getElementById('selector').value = 0;
     document.getElementById('textarea-1').value = '';
     document.getElementById('textarea-2').value = '';
     //let table = document.getElementById('table');
@@ -205,11 +210,13 @@ function logOut()   {
     let textClassList_1 = document.getElementsByClassName('textarea')[0].classList;
     let textClassList_2 = document.getElementsByClassName('textarea')[1].classList;
     let tableClassList = document.getElementsByClassName('table')[0].classList;
+    let logInfoClassList = document.getElementsByClassName('logInfo')[0].classList;
 
     secondRowClassList.add('hidden');
     textClassList_1.add('hidden');
     textClassList_2.add('hidden');
     tableClassList.add('hidden');
+    logInfoClassList.add('hidden');
 
     rows = 1;
 }
@@ -289,6 +296,11 @@ function clearText()    {
 
 
 function setText()  {
+
+    if (SELECTOR.value === 'Выберите пункт') {
+        document.getElementById('textarea-1').value = '';
+        return;
+    }
 
     let count = Object.keys(text[SELECTOR.value]).length;
     console.log(count);
