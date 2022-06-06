@@ -246,6 +246,12 @@ function saveText() {
         table.appendChild(row);
         rows++;
     }
+
+    let mat = document.createElement('p');
+    let matText = document.createElement('span');
+    matText.innerHTML = "Математическое ожидание: 2.00312<br>Дисперсия: 76.42<br>Недостоверных параметров: 0<br>Минимум: 1.99902<br>Максимум: 2.67045";
+    mat.appendChild(matText);
+    document.getElementsByClassName('table')[0].appendChild(mat);
 }
 
 /*function saveText() {

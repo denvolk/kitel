@@ -108,7 +108,13 @@ input[id$=field]:focus    {
     max-width: 800px;
     border: solid black 3px;
     border-radius: 20px;
-    padding: 50px 73px 50px 73px;
+    padding: 35px 73px 40px 73px;
+}
+.table > h1 {
+    text-align: center;
+}
+.table > span   {
+    margin-top: 20px;
 }
 
 #first-table    {
